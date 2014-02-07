@@ -27,9 +27,6 @@
         .on('click.fndtn.dropdown', '[data-dropdown]', function (e) {
           var settings = $(this).data('dropdown-init') || self.settings;
           e.preventDefault();
-
-          self.closeall.call(self);
-
           if (!settings.is_hover || Modernizr.touch) self.toggle($(this));
         })
         .on('mouseenter.fndtn.dropdown', '[data-dropdown], [data-dropdown-content]', function (e) {
@@ -45,11 +42,11 @@
           }
 
           var settings = target.data('dropdown-init') || self.settings;
-          
+
           if($(e.target).data('dropdown') && settings.is_hover) {
             self.closeall.call(self);
           }
-          
+
           if (settings.is_hover) self.open.apply(self, [dropdown, target]);
         })
         .on('mouseleave.fndtn.dropdown', '[data-dropdown], [data-dropdown-content]', function (e) {
@@ -71,8 +68,8 @@
           if ($(e.target).data('dropdown') || $(e.target).parent().data('dropdown')) {
             return;
           }
-          if (!($(e.target).data('revealId')) && 
-            (parent.length > 0 && ($(e.target).is('[data-dropdown-content]') || 
+          if (!($(e.target).data('revealId')) &&
+            (parent.length > 0 && ($(e.target).is('[data-dropdown-content]') ||
               $.contains(parent.first()[0], e.target)))) {
             e.stopPropagation();
             return;
